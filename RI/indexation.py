@@ -3,50 +3,33 @@
 
 import ParserCACM
 import TextRepresenter
-
-def index(corpus, out_file):
-	""" Build the index of words in documents 
-	:param corpus: The path to the corpus file. 
-	:param out_file: The path to the destination file.
-	:return: A dict {id: position} to find documents in the
-			 output file 
-	""" 
-	
-	parser = ParserCACM.ParserCACM()
-	parser.initFile("cacm/cacm.txt")
-	doc = parser.nextDocument()
-	inverted_idx = []
-	docs_position = {}
-	stemmer = TextRepresenter.PorterStemmer()
-	i=0
-	with open(out_file, "wb") as index:
-		while doc is not None:
-			title = doc.getId()
-			docs_position[title] = index.tell()
-			stems = stemmer.getTextRepresentation(doc.getText())
-			stems = [w + ":" + str(n) for (w, n) in stems.items()]
-			
-			index.write(title + "{")
-			index.write(','.join(stems))
-			index.write("}\n")
-			doc = parser.nextDocument()
-	return docs_position
-			
-		
+import Index
 
 if __name__ == "__main__":
-	cacm_txt = "cacm/cacm.txt"
-	#~ parser = ParserCACM.ParserCACM()
-	#~ parser.initFile(cacm_txt)
-	#~ doc = parser.nextDocument()
-	#~ print("Doc:")
-	#~ print(doc)
-	#~ stemmer = TextRepresenter.PorterStemmer()
-	#~ print("Stem: ")
-	#~ print(stemmer.getTextRepresentation("""Now that you have
-	#~ learned the rudiments of Unicode, we can look at 
-	#~ Python’s Unicode features."""))
-	
-	print("index:")
-	docs_pos = index(cacm_txt, "index.txt")
-	print(docs_pos)
+    cacm_txt = "cacm/cacm.txt"
+    #~ parser = ParserCACM.ParserCACM()
+    #~ parser.initFile(cacm_txt)
+    #~ doc = parser.nextDocument()
+    #~ print("Doc:")
+    #~ print(doc)
+    #~ stemmer = TextRepresenter.PorterStemmer()
+    #~ print("Stem: ")
+    #~ print(stemmer.getTextRepresentation("""Now that you have
+    #~ learned the rudiments of Unicode, we can look at 
+    #~ Python’s Unicode features."""))
+    
+    #~ print("index:")
+    #~ docs_pos = index(cacm_txt, "index.txt")
+    #~ print(docs_pos)
+    idx = Index.Index("cacm", "gendata/")
+    idx.indexation("cacm/cacm.txt", ParserCACM.ParserCACM(),
+                   TextRepresenter.PorterStemmer())
+    print("Retrieve stems for doc 111")
+    print(idx.getTfsForDoc("111"))
+    
+    print("""Should look like "{scale:1,reliabl:1,appli:1,basic:1,raphson:1,recommend:2,invers:1,rapid:1,newton:1,high:1,shown:1
+,programm:1,solut:1,exampl:1,pitfal:1,rule:1,applic:1,techniqu:2,equat:2,degre:1,present:1,procedur:
+1,illustr:1,accuraci:1,converg:1,realiz:1,ellenberg:1,polynomial:2,bairstow:1,comput:1,circumv:1,gre
+at:1,iter:1,root:1,numer:3}" """)
+                   
+    

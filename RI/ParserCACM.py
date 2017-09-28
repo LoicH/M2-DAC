@@ -104,7 +104,7 @@ class ParserCACM(Parser):
                 continue;
             
             if(modeX):
-                l=s.split("\t");
+                l=s.split("    ");
                 if(l[0]!=identifier):
                     if(len(l[0])>0):
                         links+=l[0]+";";

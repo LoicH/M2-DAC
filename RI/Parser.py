@@ -53,7 +53,7 @@ class Parser(object):
                         read=False
                         ok=True
                     break
-                if(ligne.startswith(self.begin)):
+                if(ligne.startswith(self.begin.encode())):
                     if((len(self.end)==0) and read):
                         nbBytes=curOff-start;
                         read=False;
@@ -66,7 +66,7 @@ class Parser(object):
                         read=True
                         start=curOff                      
                 if(read):
-                    st+=(ligne)
+                    st+=(ligne.decode())
                 if((len(self.end)>0) and (ligne.startswith(self.end))):
                     read=False
                     ok=True;
