@@ -1,0 +1,14 @@
+(stats
+  (meta
+    (timestamp "2017-09-27T11:38:17.958+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>)
+    (run@ "2017/09/27 11:38:17 CEST")
+    (count 24))
+  ((VAR <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne>)
+   7)
+  ((VAR <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi>)
+   2)
+  (<http://www.asws.com/rois#epoux> 3)
+  (<http://www.asws.com/rois#fils> 4)
+  (<http://www.asws.com/rois#nom> 8)
+  (<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> 9)
+  (other 0))

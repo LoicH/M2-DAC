@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rdf:RDF xml:base="http://www.asws.com/rois#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.asws.com/rois#">
+  <Roi  rdf:ID='r1'>
+    <nom>Francois I</nom>
+    <enfant>
+      <Homme rdf:ID='r3'>
+	<nom>Henri II</nom>
+	<epouse>
+	  <Personne rdf:ID='r5'> 
+	    <nom>Catherine de Medicis</nom> 
+	    <fils>
+	      <Personne rdf:ID='r4'>
+		<nom>Francois II</nom>
+		<epouse> 
+		  <Personne rdf:ID='r6'> 
+		    <nom>Mary Stuart</nom> 
+		  </Personne>
+		</epouse>
+	      </Personne>
+	    </fils>
+	    <enfant>
+	      <Personne rdf:ID='r2'> 
+		<nom>Charles IX</nom> 
+		<epouse> 
+		  <Personne rdf:ID='r8'> 
+		    <nom>Elisabeth d Autriche</nom> 
+		  </Personne> 
+		</epouse>
+	      </Personne> 
+	    </enfant>
+	    <enfant>
+	      <Homme rdf:ID='r9'>
+		<nom>Henry III</nom>
+	      </Homme>
+	    </enfant>
+	  </Personne>
+	</epouse>
+      </Homme>
+    </enfant>
+  </Roi>
+</rdf:RDF>

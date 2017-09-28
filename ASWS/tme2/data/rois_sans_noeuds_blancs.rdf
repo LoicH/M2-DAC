@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rdf:RDF xml:base="http://www.bdia.com/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns="http://www.bdia.com/#">
+<Roi  rdf:ID='r1'>
+  <nom>Francois I</nom>
+  <fils>
+     <Personne rdf:ID='r3'>
+       <nom>Henri II</nom>
+     </Personne>
+  </fils>
+</Roi>
+<Roi rdf:ID='r2'> 
+   <nom>Charles IX</nom> 
+</Roi> 
+<Personne rdf:ID='r4'> 
+  <epoux rdf:resource='#r3'/>
+  <nom>Catherine de Medicis</nom> 
+  <fils>
+     <Personne rdf:ID='r5'>
+      <nom>Francois II</nom>
+      <epoux> 
+        <Personne rdf:ID='r6'> 
+          <nom>Mary Stuart</nom> 
+        </Personne>
+      </epoux>
+    </Personne>
+  </fils>
+  <fils resource='#r2'/>
+  <fils>
+    <Personne rdf:ID='r7'>
+      <nom>Henry III</nom>
+    </Personne>
+  </fils>
+</Personne>
+<Personne rdf:about='#r2'>
+  <epoux> 
+    <Personne rdf:ID='r8'> 
+       <nom>Elisabeth d Autriche</nom> 
+    </Personne> 
+  </epoux>
+</Personne>
+</rdf:RDF>

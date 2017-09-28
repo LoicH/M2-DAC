@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<p:film xmlns:p='http://www.pariscope.fr/'>
+   <titre>Un coeur en hiver</titre>
+   <a:actrice xmlns:a='http://www.comedie.fr/'> 
+      <p:role>Camille</p:role>
+      <nom>Béart</nom>
+      <a:prenom>Emmanuelle</a:prenom>
+   </a:actrice>
+   <comedien xmlns='http://www.allocine.fr/'>
+      <p:role>Stéphane</p:role>
+      <nom>Daniel Auteuil</nom>
+   </comedien>
+</p:film>

@@ -1,0 +1,42 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://www.asws.com/rois#> .
+
+:r1
+    :fils :r3 ;
+    :nom "Francois I" ;
+    a :Roi .
+
+:r2
+    :epouse :r8 ;
+    :nom "Charles IX" ;
+    a :Roi .
+
+:r3
+    :epouse :r5 ;
+    :nom "Henri II" ;
+    a :Roi .
+
+:r4
+    :epouse :r6 ;
+    :nom "Francois II" ;
+    a :Roi .
+
+:r5
+    :fils :r2, :r4, :r9 ;
+    :nom "Catherine de Medicis" ;
+    a :Reine .
+
+:r6
+    :epoux :r4 ;
+    :nom "Mary Stuart" ;
+    a :Reine .
+
+:r8
+    :epoux :r2 ;
+    :nom "Elisabeth d Autriche" ;
+    a :Reine .
+
+:r9
+    :nom "Henry III" ;
+    a :Roi .
+

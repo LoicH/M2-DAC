@@ -1,0 +1,171 @@
+@prefix :      <http://www.asws.com/rois#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+:Reine  a                rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  :Reine , rdfs:Resource , :Femme .
+
+rdf:rest  a                 rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:List , rdfs:Resource ;
+        rdfs:range          rdf:List , rdfs:Resource ;
+        rdfs:subPropertyOf  rdf:rest .
+
+rdfs:isDefinedBy  a         rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:seeAlso , rdfs:isDefinedBy .
+
+rdf:List  a              rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdf:List .
+
+rdf:predicate  a            rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement , rdfs:Resource ;
+        rdfs:subPropertyOf  rdf:predicate .
+
+rdf:Property  a          rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdf:Property .
+
+rdf:Alt  a               rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container .
+
+rdfs:Datatype  a         rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Class .
+
+rdf:Statement  a         rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdf:Statement .
+
+rdfs:Class  a            rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdfs:Class .
+
+rdf:type  a                 rdf:Property , rdfs:Resource ;
+        rdfs:range          rdfs:Class , rdfs:Resource ;
+        rdfs:subPropertyOf  rdf:type .
+
+rdfs:Resource  a         rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:subject  a              rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement , rdfs:Resource ;
+        rdfs:subPropertyOf  rdf:subject .
+
+rdf:Bag  a               rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container .
+
+rdf:XMLLiteral  a  rdfs:Datatype , rdfs:Class , rdfs:Resource .
+
+:epouse  a                  rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  :epouse .
+
+rdfs:range  a               rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Property , rdfs:Resource ;
+        rdfs:range          rdfs:Class , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:range .
+
+rdfs:subPropertyOf  a       rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Property , rdfs:Resource ;
+        rdfs:range          rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:subPropertyOf .
+
+:Homme  a                rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  :Homme , rdfs:Resource , :Personne .
+
+rdf:object  a               rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement , rdfs:Resource ;
+        rdfs:subPropertyOf  rdf:object .
+
+:Roi    a                rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  :Roi , rdfs:Resource , :Homme .
+
+:Femme  a                rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  :Femme , rdfs:Resource , :Personne .
+
+rdfs:ContainerMembershipProperty
+        a                rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdf:Property .
+
+rdf:nil  a      rdf:List , rdfs:Resource .
+
+rdfs:domain  a              rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Property , rdfs:Resource ;
+        rdfs:range          rdfs:Class , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:domain .
+
+rdfs:Literal  a          rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdfs:Literal .
+
+rdf:first  a                rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:List , rdfs:Resource ;
+        rdfs:subPropertyOf  rdf:first .
+
+rdfs:subClassOf  a          rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdfs:Class , rdfs:Resource ;
+        rdfs:range          rdfs:Class , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:subClassOf .
+
+:Personne  a             rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  :Personne , rdfs:Resource .
+
+rdf:Seq  a               rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container .
+
+:nom    a                   rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Personne , rdfs:Resource ;
+        rdfs:range          rdfs:Literal , rdfs:Resource ;
+        rdfs:subPropertyOf  :nom .
+
+:enfant  a                  rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Personne , rdfs:Resource ;
+        rdfs:range          :Personne , rdfs:Resource ;
+        rdfs:subPropertyOf  :enfant .
+
+:epoux  a                   rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Personne , rdfs:Resource ;
+        rdfs:range          :Personne , rdfs:Resource ;
+        rdfs:subPropertyOf  :epoux .
+
+:r6     a       :Personne , :Reine , :Femme , rdfs:Resource ;
+        :epoux  :r4 ;
+        :nom    "Mary Stuart" .
+
+:r5     a        :Reine , :Femme , :Personne , rdfs:Resource ;
+        :enfant  :r9 , :r2 , :r4 ;
+        :epoux   :r3 ;
+        :fils    :r9 , :r4 ;
+        :nom     "Catherine de Medicis" .
+
+:descendant  a              rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Personne , rdfs:Resource ;
+        rdfs:range          :Personne , rdfs:Resource ;
+        rdfs:subPropertyOf  :descendant .
+
+:r4     a        :Personne , :Homme , :Roi , rdfs:Resource ;
+        :epouse  :r6 ;
+        :nom     "Francois II" .
+
+:r3     a        :Homme , :Personne , :Roi , rdfs:Resource ;
+        :epouse  :r5 ;
+        :nom     "Henri II" .
+
+:r9     a       :Homme , :Personne , :Roi , rdfs:Resource ;
+        :nom    "Henry III" .
+
+:fils   a                   rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Personne , rdfs:Resource ;
+        rdfs:range          :Homme , :Personne , rdfs:Resource ;
+        rdfs:subPropertyOf  :enfant , :fils .
+
+:r2     a        :Personne , rdfs:Resource ;
+        :epouse  :r8 ;
+        :nom     "Charles IX" .
+
+:r8     a       :Personne , rdfs:Resource ;
+        :epoux  :r2 ;
+        :nom    "Elisabeth d Autriche" .
+
+:r1     a        :Roi , :Homme , :Personne , rdfs:Resource ;
+        :enfant  :r3 ;
+        :fils    :r3 ;
+        :nom     "Francois I" .
+
+rdfs:Container  a  rdfs:Class , rdfs:Resource .
+
+rdfs:seeAlso  a             rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:seeAlso .

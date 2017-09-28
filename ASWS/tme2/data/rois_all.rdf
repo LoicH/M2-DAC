@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.bdia.com/#"
+     xml:base="http://www.bdia.com/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.asws.com/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.bdia.com/#epoux -->
+
+    <rdf:Description rdf:about="http://www.bdia.com/#epoux">
+        <rdfs:domain></rdfs:domain>
+        <rdfs:range></rdfs:range>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.bdia.com/#fils -->
+
+    <rdf:Description rdf:about="http://www.bdia.com/#fils">
+        <rdfs:subPropertyOf></rdfs:subPropertyOf>
+        <rdfs:range></rdfs:range>
+        <rdfs:domain></rdfs:domain>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.bdia.com/#nom -->
+
+    <rdf:Description rdf:about="http://www.bdia.com/#nom">
+        <rdfs:domain></rdfs:domain>
+        <rdfs:range></rdfs:range>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#domain -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;domain"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#range -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;range"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#subPropertyOf -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;subPropertyOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.asws.com/enfant -->
+
+    <owl:ObjectProperty rdf:about="http://www.asws.com/enfant">
+        <rdfs:domain rdf:resource="http://www.bdia.com/#Personne"/>
+        <rdfs:range rdf:resource="http://www.bdia.com/#Personne"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.asws.com/epoux -->
+
+    <owl:ObjectProperty rdf:about="http://www.asws.com/epoux">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.bdia.com/#Personne"/>
+        <rdfs:range rdf:resource="http://www.bdia.com/#Personne"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.asws.com/nom -->
+
+    <owl:DatatypeProperty rdf:about="http://www.asws.com/nom">
+        <rdfs:domain rdf:resource="http://www.bdia.com/#Personne"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.bdia.com/#Femme -->
+
+    <owl:Class rdf:about="http://www.bdia.com/#Femme">
+        <rdfs:subClassOf rdf:resource="http://www.bdia.com/#Personne"/>
+        <owl:disjointWith rdf:resource="http://www.bdia.com/#Homme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.bdia.com/#Homme -->
+
+    <owl:Class rdf:about="http://www.bdia.com/#Homme">
+        <rdfs:subClassOf rdf:resource="http://www.bdia.com/#Personne"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.bdia.com/#Personne -->
+
+    <owl:Class rdf:about="http://www.bdia.com/#Personne">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.bdia.com/#Reine -->
+
+    <owl:Class rdf:about="http://www.bdia.com/#Reine">
+        <rdfs:subClassOf rdf:resource="http://www.bdia.com/#Femme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.bdia.com/#Roi -->
+
+    <owl:Class rdf:about="http://www.bdia.com/#Roi">
+        <rdfs:subClassOf rdf:resource="http://www.bdia.com/#Homme"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.bdia.com/#r1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.bdia.com/#r1">
+        <rdf:type rdf:resource="http://www.bdia.com/#Roi"/>
+        <nom>Francois I</nom>
+        <fils rdf:resource="http://www.bdia.com/#r3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.bdia.com/#r2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.bdia.com/#r2">
+        <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+        <rdf:type rdf:resource="http://www.bdia.com/#Roi"/>
+        <nom>Charles IX</nom>
+        <epoux rdf:resource="http://www.bdia.com/#r8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.bdia.com/#r3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.bdia.com/#r3">
+        <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+        <nom>Henri II</nom>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.bdia.com/#r6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.bdia.com/#r6">
+        <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+        <nom>Mary Stuart</nom>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.bdia.com/#r8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.bdia.com/#r8">
+        <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+        <nom>Elisabeth d Autriche</nom>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+        <epoux rdf:resource="http://www.bdia.com/#r3"/>
+        <fils>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+                <epoux rdf:resource="http://www.bdia.com/#r6"/>
+            </rdf:Description>
+        </fils>
+        <fils>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.bdia.com/#Personne"/>
+            </rdf:Description>
+        </fils>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.bdia.com/#enfant">
+        <rdfs:domain></rdfs:domain>
+        <rdfs:range></rdfs:range>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.bdia.com/#descendant">
+        <rdfs:domain></rdfs:domain>
+        <rdfs:range></rdfs:range>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

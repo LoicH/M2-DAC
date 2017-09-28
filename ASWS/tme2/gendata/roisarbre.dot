@@ -1,0 +1,57 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"Rr1" -> "RRoi" [ label="rdf:type" ];
+	"Rr1" -> "LFrancois I" [ label="nom" ];
+	"Rr3" -> "RRoi" [ label="rdf:type" ];
+	"Rr3" -> "LHenri II" [ label="nom" ];
+	"Rr5" -> "RReine" [ label="rdf:type" ];
+	"Rr5" -> "Rr3" [ label="epoux" ];
+	"Rr5" -> "LCatherine de Medicis" [ label="nom" ];
+	"Rr4" -> "RRoi" [ label="rdf:type" ];
+	"Rr4" -> "LFrancois II" [ label="nom" ];
+	"Rr6" -> "RReine" [ label="rdf:type" ];
+	"Rr6" -> "LMary Stuart" [ label="nom" ];
+	"Rr6" -> "Rr4" [ label="epoux" ];
+	"Rr4" -> "Rr6" [ label="epouse" ];
+	"Rr5" -> "Rr4" [ label="fils" ];
+	"Rr2" -> "RRoi" [ label="rdf:type" ];
+	"Rr2" -> "LCharles IX" [ label="nom" ];
+	"Rr8" -> "RReine" [ label="rdf:type" ];
+	"Rr8" -> "LElisabeth d Autriche" [ label="nom" ];
+	"Rr8" -> "Rr2" [ label="epoux" ];
+	"Rr2" -> "Rr8" [ label="epouse" ];
+	"Rr5" -> "Rr2" [ label="fils" ];
+	"Rr9" -> "RRoi" [ label="rdf:type" ];
+	"Rr9" -> "LHenry III" [ label="nom" ];
+	"Rr5" -> "Rr9" [ label="fils" ];
+	"Rr3" -> "Rr5" [ label="epouse" ];
+	"Rr1" -> "Rr3" [ label="fils" ];
+
+	// Resources
+	"Rr1" [ label="r1", shape = ellipse, color = blue ];
+	"RRoi" [ label="Roi", shape = ellipse, color = blue ];
+	"Rr3" [ label="r3", shape = ellipse, color = blue ];
+	"Rr5" [ label="r5", shape = ellipse, color = blue ];
+	"RReine" [ label="Reine", shape = ellipse, color = blue ];
+	"Rr4" [ label="r4", shape = ellipse, color = blue ];
+	"Rr6" [ label="r6", shape = ellipse, color = blue ];
+	"Rr2" [ label="r2", shape = ellipse, color = blue ];
+	"Rr8" [ label="r8", shape = ellipse, color = blue ];
+	"Rr9" [ label="r9", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+	"LFrancois I" [ label="Francois I", shape = record ];
+	"LHenri II" [ label="Henri II", shape = record ];
+	"LCatherine de Medicis" [ label="Catherine de Medicis", shape = record ];
+	"LFrancois II" [ label="Francois II", shape = record ];
+	"LMary Stuart" [ label="Mary Stuart", shape = record ];
+	"LCharles IX" [ label="Charles IX", shape = record ];
+	"LElisabeth d Autriche" [ label="Elisabeth d Autriche", shape = record ];
+	"LHenry III" [ label="Henry III", shape = record ];
+
+	label="\n\nModel:\n(Unknown)\n\nNamespaces:\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\nhttp://www.asws.com/rois#\n";
+}

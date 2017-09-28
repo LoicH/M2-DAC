@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="http://rdf.insee.fr/geo/" uri="france.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="http://www.asws.com/" uri="rois_all.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="duplicate:http://www.bdia.com/" uri="rois.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="duplicate:http://www.bdia.com/" uri="rois_all.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="duplicate:http://www.bdia.com/" uri="rois_sans_noeuds_blancs.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="http://www.bdia.com/#" uri="rois_all2.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1405791999023" name="http://www.lt-world.org/ltw.owl" uri="lt-mini-1.owl"/>
+    </group>
+</catalog>

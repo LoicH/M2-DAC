@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<RoisdeFrance>
+  <Roi>
+    <nom>Francois I</nom>
+    <fils>
+      <Roi id='r3'>
+	<nom>Henri II</nom>
+	<epouse>
+	  <Reine id='r5'> 
+	    <nom>Catherine de Medicis</nom> 
+	    <fils>
+	      <Roi id='r4'>
+		<nom>Francois II</nom>
+		<epouse> 
+		  <Reine id='r6'> 
+		    <nom>Mary Stuart</nom> 
+		    <epoux ref='r4'/>
+		  </Reine>
+		</epouse>
+	      </Roi>
+	    </fils>
+	    <fils>
+	      <Roi id='r2'> 
+		<nom>Charles IX</nom> 
+		<epouse> 
+		  <Reine id='r8'> 
+		    <nom>Elisabeth d Autriche</nom> 
+		    <epoux ref='r2'/>
+		  </Reine> 
+		</epouse>
+	      </Roi> 
+	    </fils>
+	    <fils>
+	      <Roi id='r9'>
+		<nom>Henry III</nom>
+	      </Roi>
+	    </fils>
+	  </Reine>
+	</epouse>
+      </Roi>
+    </fils>
+  </Roi>
+</RoisdeFrance>

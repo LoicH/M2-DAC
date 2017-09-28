@@ -1,0 +1,112 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"Rhttp://www.asws.com/rois#r1" -> "Rhttp://www.asws.com/rois#Roi" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r1" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r1" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r1" -> "LFrancois I" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r1" -> "Rhttp://www.asws.com/rois#r3" [ label="http://www.asws.com/rois#fils" ];
+	"Rhttp://www.asws.com/rois#r1" -> "Rhttp://www.asws.com/rois#r3" [ label="http://www.asws.com/rois#enfant" ];
+	"Rhttp://www.asws.com/rois#Roi" -> "Rhttp://www.w3.org/2000/01/rdf-schema#Class" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#Roi" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/2000/01/rdf-schema#subClassOf" ];
+	"Rhttp://www.asws.com/rois#Homme" -> "Rhttp://www.w3.org/2000/01/rdf-schema#Class" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#Homme" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#subClassOf" ];
+	"Rhttp://www.asws.com/rois#Personne" -> "Rhttp://www.w3.org/2000/01/rdf-schema#Class" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#nom" -> "Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Property" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#nom" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#domain" ];
+	"Rhttp://www.asws.com/rois#nom" -> "Rhttp://www.w3.org/2000/01/rdf-schema#Literal" [ label="http://www.w3.org/2000/01/rdf-schema#range" ];
+	"Rhttp://www.asws.com/rois#r3" -> "Rhttp://www.asws.com/rois#Roi" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r3" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r3" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r3" -> "LHenri II" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r3" -> "Rhttp://www.asws.com/rois#r5" [ label="http://www.asws.com/rois#epouse" ];
+	"Rhttp://www.asws.com/rois#fils" -> "Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Property" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#fils" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#domain" ];
+	"Rhttp://www.asws.com/rois#fils" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/2000/01/rdf-schema#range" ];
+	"Rhttp://www.asws.com/rois#fils" -> "Rhttp://www.asws.com/rois#enfant" [ label="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" ];
+	"Rhttp://www.asws.com/rois#enfant" -> "Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Property" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#enfant" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#domain" ];
+	"Rhttp://www.asws.com/rois#enfant" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#range" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#Reine" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#Femme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r5" -> "LCatherine de Medicis" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#r4" [ label="http://www.asws.com/rois#fils" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#r2" [ label="http://www.asws.com/rois#fils" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#r9" [ label="http://www.asws.com/rois#fils" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#r4" [ label="http://www.asws.com/rois#enfant" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#r2" [ label="http://www.asws.com/rois#enfant" ];
+	"Rhttp://www.asws.com/rois#r5" -> "Rhttp://www.asws.com/rois#r9" [ label="http://www.asws.com/rois#enfant" ];
+	"Rhttp://www.asws.com/rois#Reine" -> "Rhttp://www.w3.org/2000/01/rdf-schema#Class" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#Reine" -> "Rhttp://www.asws.com/rois#Femme" [ label="http://www.w3.org/2000/01/rdf-schema#subClassOf" ];
+	"Rhttp://www.asws.com/rois#Femme" -> "Rhttp://www.w3.org/2000/01/rdf-schema#Class" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#Femme" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#subClassOf" ];
+	"Rhttp://www.asws.com/rois#r4" -> "Rhttp://www.asws.com/rois#Roi" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r4" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r4" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r4" -> "LFrancois II" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r4" -> "Rhttp://www.asws.com/rois#r6" [ label="http://www.asws.com/rois#epouse" ];
+	"Rhttp://www.asws.com/rois#r6" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r6" -> "Rhttp://www.asws.com/rois#Reine" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r6" -> "Rhttp://www.asws.com/rois#Femme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r6" -> "LMary Stuart" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r6" -> "Rhttp://www.asws.com/rois#r4" [ label="http://www.asws.com/rois#epoux" ];
+	"Rhttp://www.asws.com/rois#epoux" -> "Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Property" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#epoux" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#domain" ];
+	"Rhttp://www.asws.com/rois#epoux" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#range" ];
+	"Rhttp://www.asws.com/rois#r2" -> "Rhttp://www.asws.com/rois#Roi" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r2" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r2" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r2" -> "LCharles IX" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r2" -> "Rhttp://www.asws.com/rois#r8" [ label="http://www.asws.com/rois#epouse" ];
+	"Rhttp://www.asws.com/rois#r8" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r8" -> "Rhttp://www.asws.com/rois#Reine" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r8" -> "Rhttp://www.asws.com/rois#Femme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r8" -> "LElisabeth d Autriche" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#r8" -> "Rhttp://www.asws.com/rois#r2" [ label="http://www.asws.com/rois#epoux" ];
+	"Rhttp://www.asws.com/rois#r9" -> "Rhttp://www.asws.com/rois#Roi" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r9" -> "Rhttp://www.asws.com/rois#Homme" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r9" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#r9" -> "LHenry III" [ label="http://www.asws.com/rois#nom" ];
+	"Rhttp://www.asws.com/rois#descendant" -> "Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Property" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" ];
+	"Rhttp://www.asws.com/rois#descendant" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#domain" ];
+	"Rhttp://www.asws.com/rois#descendant" -> "Rhttp://www.asws.com/rois#Personne" [ label="http://www.w3.org/2000/01/rdf-schema#range" ];
+
+	// Resources
+	"Rhttp://www.asws.com/rois#r1" [ label="http://www.asws.com/rois#r1", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#Roi" [ label="http://www.asws.com/rois#Roi", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#Homme" [ label="http://www.asws.com/rois#Homme", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#Personne" [ label="http://www.asws.com/rois#Personne", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r3" [ label="http://www.asws.com/rois#r3", shape = ellipse, color = blue ];
+	"Rhttp://www.w3.org/2000/01/rdf-schema#Class" [ label="http://www.w3.org/2000/01/rdf-schema#Class", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#nom" [ label="http://www.asws.com/rois#nom", shape = ellipse, color = blue ];
+	"Rhttp://www.w3.org/1999/02/22-rdf-syntax-ns#Property" [ label="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property", shape = ellipse, color = blue ];
+	"Rhttp://www.w3.org/2000/01/rdf-schema#Literal" [ label="http://www.w3.org/2000/01/rdf-schema#Literal", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r5" [ label="http://www.asws.com/rois#r5", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#fils" [ label="http://www.asws.com/rois#fils", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#enfant" [ label="http://www.asws.com/rois#enfant", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#Reine" [ label="http://www.asws.com/rois#Reine", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#Femme" [ label="http://www.asws.com/rois#Femme", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r4" [ label="http://www.asws.com/rois#r4", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r2" [ label="http://www.asws.com/rois#r2", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r9" [ label="http://www.asws.com/rois#r9", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r6" [ label="http://www.asws.com/rois#r6", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#epoux" [ label="http://www.asws.com/rois#epoux", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#r8" [ label="http://www.asws.com/rois#r8", shape = ellipse, color = blue ];
+	"Rhttp://www.asws.com/rois#descendant" [ label="http://www.asws.com/rois#descendant", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+	"LFrancois I" [ label="Francois I", shape = record ];
+	"LHenri II" [ label="Henri II", shape = record ];
+	"LCatherine de Medicis" [ label="Catherine de Medicis", shape = record ];
+	"LFrancois II" [ label="Francois II", shape = record ];
+	"LMary Stuart" [ label="Mary Stuart", shape = record ];
+	"LCharles IX" [ label="Charles IX", shape = record ];
+	"LElisabeth d Autriche" [ label="Elisabeth d Autriche", shape = record ];
+	"LHenry III" [ label="Henry III", shape = record ];
+
+	label="\n\nModel:\n(Unknown)";
+}

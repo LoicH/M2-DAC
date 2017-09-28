@@ -1,0 +1,24 @@
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+_:genid1 <http://www.asws.com/rois#nom> "Francois I" .
+<http://www.asws.com/rois#r3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r3> <http://www.asws.com/rois#nom> "Henri II" .
+_:genid1 <http://www.asws.com/rois#fils> <http://www.asws.com/rois#r3> .
+<http://www.asws.com/rois#r2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+<http://www.asws.com/rois#r2> <http://www.asws.com/rois#nom> "Charles IX" .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+_:genid2 <http://www.asws.com/rois#epoux> <http://www.asws.com/rois#r3> .
+_:genid2 <http://www.asws.com/rois#nom> "Catherine de Medicis" .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+_:genid3 <http://www.asws.com/rois#nom> "Francois II" .
+<http://www.asws.com/rois#r6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r6> <http://www.asws.com/rois#nom> "Mary Stuart" .
+_:genid3 <http://www.asws.com/rois#epoux> <http://www.asws.com/rois#r6> .
+_:genid2 <http://www.asws.com/rois#fils> _:genid3 .
+_:genid2 <http://www.asws.com/rois#fils> <http://www.asws.com/rois#r2> .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+_:genid4 <http://www.asws.com/rois#nom> "Henry III" .
+_:genid2 <http://www.asws.com/rois#fils> _:genid4 .
+<http://www.asws.com/rois#r2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r8> <http://www.asws.com/rois#nom> "Elisabeth d Autriche" .
+<http://www.asws.com/rois#r2> <http://www.asws.com/rois#epoux> <http://www.asws.com/rois#r8> .

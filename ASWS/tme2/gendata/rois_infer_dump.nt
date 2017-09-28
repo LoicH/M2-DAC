@@ -1,0 +1,70 @@
+<http://www.asws.com/rois#r1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+<http://www.asws.com/rois#r1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#r1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r1> <http://www.asws.com/rois#nom> "Francois I" .
+<http://www.asws.com/rois#r1> <http://www.asws.com/rois#fils> <http://www.asws.com/rois#r3> .
+<http://www.asws.com/rois#r1> <http://www.asws.com/rois#enfant> <http://www.asws.com/rois#r3> .
+<http://www.asws.com/rois#Roi> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://www.asws.com/rois#Roi> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#Homme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://www.asws.com/rois#Homme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#Personne> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://www.asws.com/rois#nom> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://www.asws.com/rois#nom> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#nom> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2000/01/rdf-schema#Literal> .
+<http://www.asws.com/rois#r3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+<http://www.asws.com/rois#r3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#r3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r3> <http://www.asws.com/rois#nom> "Henri II" .
+<http://www.asws.com/rois#r3> <http://www.asws.com/rois#epouse> <http://www.asws.com/rois#r5> .
+<http://www.asws.com/rois#fils> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://www.asws.com/rois#fils> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#fils> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#fils> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.asws.com/rois#enfant> .
+<http://www.asws.com/rois#enfant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://www.asws.com/rois#enfant> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#enfant> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Reine> .
+<http://www.asws.com/rois#r5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Femme> .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#nom> "Catherine de Medicis" .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#fils> <http://www.asws.com/rois#r4> .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#fils> <http://www.asws.com/rois#r2> .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#fils> <http://www.asws.com/rois#r9> .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#enfant> <http://www.asws.com/rois#r4> .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#enfant> <http://www.asws.com/rois#r2> .
+<http://www.asws.com/rois#r5> <http://www.asws.com/rois#enfant> <http://www.asws.com/rois#r9> .
+<http://www.asws.com/rois#Reine> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://www.asws.com/rois#Reine> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.asws.com/rois#Femme> .
+<http://www.asws.com/rois#Femme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://www.asws.com/rois#Femme> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+<http://www.asws.com/rois#r4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#r4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r4> <http://www.asws.com/rois#nom> "Francois II" .
+<http://www.asws.com/rois#r4> <http://www.asws.com/rois#epouse> <http://www.asws.com/rois#r6> .
+<http://www.asws.com/rois#r6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Reine> .
+<http://www.asws.com/rois#r6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Femme> .
+<http://www.asws.com/rois#r6> <http://www.asws.com/rois#nom> "Mary Stuart" .
+<http://www.asws.com/rois#r6> <http://www.asws.com/rois#epoux> <http://www.asws.com/rois#r4> .
+<http://www.asws.com/rois#epoux> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://www.asws.com/rois#epoux> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#epoux> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+<http://www.asws.com/rois#r2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#r2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r2> <http://www.asws.com/rois#nom> "Charles IX" .
+<http://www.asws.com/rois#r2> <http://www.asws.com/rois#epouse> <http://www.asws.com/rois#r8> .
+<http://www.asws.com/rois#r8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Reine> .
+<http://www.asws.com/rois#r8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Femme> .
+<http://www.asws.com/rois#r8> <http://www.asws.com/rois#nom> "Elisabeth d Autriche" .
+<http://www.asws.com/rois#r8> <http://www.asws.com/rois#epoux> <http://www.asws.com/rois#r2> .
+<http://www.asws.com/rois#r9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Roi> .
+<http://www.asws.com/rois#r9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Homme> .
+<http://www.asws.com/rois#r9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#r9> <http://www.asws.com/rois#nom> "Henry III" .
+<http://www.asws.com/rois#descendant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://www.asws.com/rois#descendant> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.asws.com/rois#Personne> .
+<http://www.asws.com/rois#descendant> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.asws.com/rois#Personne> .

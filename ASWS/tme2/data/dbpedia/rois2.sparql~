@@ -1,0 +1,14 @@
+construct { ?s ?p ?o . ?o ?q ?r }
+from <rois.xml>
+where {
+      ?s <http://purl.org/dc/terms/subject>
+      	 <http://fr.dbpedia.org/resource/Catégorie:Roi_de_France> . 
+	 ?s ?p ?o .
+	    OPTIONAL { ?o ?q ?r }
+FILTER (    
+(?p = <http://fr.dbpedia.org/property/conjoint>) ||
+    (?p = <http://fr.dbpedia.org/property/enfants>) && 
+(?q = <http://fr.dbpedia.org/property/conjoint>) ||
+    (?q = <http://fr.dbpedia.org/property/enfants> )
+)
+} LIMIT 10000   
