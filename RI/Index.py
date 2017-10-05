@@ -81,7 +81,7 @@ class Index(object):
         with open(self.invertedPath, "w+") as invIndex:
             while doc is not None:
                 title = doc.getId()
-                print("Parsing doc n°" + title)
+                #~ print("Parsing doc n°" + title)
                 stems = (self.textRepresenter
                             .getTextRepresentation(doc.getText()))
                 for stem in stems.keys():
@@ -93,15 +93,15 @@ class Index(object):
         
     def writeStem(self, stem, docId, indexFile):
         """Write the stem in the inverted index (used in 2nd pass)"""
-        print("Write stem '"+stem+"'")
+        #~ print("Write stem '"+stem+"'")
         if self.stems[stem]["pos"] >= 0:  # We already encoutered this stem
             cursor = self.stems[stem]["pos"] + len(stem) + 1
             indexFile.seek(cursor)
             repres = indexFile.read(self.stems[stem]["len"])
-            print(("At position %d, repres = "+repres) % cursor)
+            #~ print(("At position %d, repres = "+repres) % cursor)
              # Write the docId after the first ',,'
             idx_empty = repres.find(',,')
-            print("idx_empty =", idx_empty)
+            #~ print("idx_empty =", idx_empty)
             # Relative seek:
             indexFile.seek(cursor + idx_empty + 1)
             indexFile.write(docId)
@@ -112,9 +112,9 @@ class Index(object):
             indexFile.write(stem+":{"+docId)
             leftToWrite = self.stems[stem]["len"] - 2 - len(docId)
             if leftToWrite > 0:
-                print("Writing %d ','" % leftToWrite)
+                #~ print("Writing %d ','" % leftToWrite)
                 indexFile.write("," * leftToWrite)
-            indexFile.write("}")
+            indexFile.write("}\n")
         
     def addStem(self, stem, docId):
         """ Add the stem in self.stems (used in 1st pass)
@@ -122,12 +122,12 @@ class Index(object):
         """
         if stem in self.stems:        # Not a new stem
             lenToAdd = len(docId) + 1 # for "docId,"
-            print("'" + stem + "' is found in " + docId + " too, adding %d chars" % lenToAdd)
+            #~ print("'" + stem + "' is found in " + docId + " too, adding %d chars" % lenToAdd)
             self.stems[stem]["len"] += lenToAdd
             
         else:  # Or add the new stem:
-            lenToAdd = len(docId) + 2
-            print("'" + stem + "' is found in " + docId + ", setting %d chars" % lenToAdd)
+            lenToAdd = len(docId) + 2 # 2 braces
+            #~ print("'" + stem + "' is found in " + docId + ", setting %d chars" % lenToAdd)
             self.stems[stem] = {"pos": -1,
                                 "len": lenToAdd}
         
@@ -150,7 +150,10 @@ class Index(object):
     def getTfsForStem(self, stem):
         """Return the doc frequencies of a given stem from 
         the inverted index."""
-        return None
+        with open(self.invertedPath, "r") as invIndex:
+            invIndex.seek(self.stems[stem]["pos"] + len(stem) + 1)
+            repres = invIndex.read(self.stems[stem]["len"])
+            return repres[1:-1].split(',')
         
     def getStrDoc(self, doc):
         """ Return the string from where a document came from in the 
