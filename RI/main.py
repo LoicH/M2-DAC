@@ -19,7 +19,7 @@ if __name__ == "__main__":
                    
     print("###### A bit of testing: ###### ")
     print("Retrieve stems in doc 19:")
-    print(idx.getTfsForDoc("19"))
+    print(idx.getTfsForDoc(19))
     print("Should look like “Glossary of Computer Engineering and \
 Programming Terminology”")
 

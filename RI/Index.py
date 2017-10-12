@@ -26,13 +26,11 @@ class Index(object):
         self.invertedPath = os.path.join(out_dir, self.name + "_inverted.txt")
         # Dictionary {doc: (position in index, len of representation)} 
         self.docs = {}
-        # Dict {stem: (position in inverted idx, len of repr.)}
+        # Dict {stem: {"pos":position in inverted idx, "len":len of repr.}}
+        # self.stems["foo"]["pos"] gives the position of "foo"
         self.stems = {}
-        # Dict {doc: (srcFile, position in src, len)}
+        # Dict {int(doc): string("source path;position in source;text length")}
         self.docFrom = {}
-        #TODO ^
-        # The list of all stems by order of adding in inverted index.
-        #~ self.vocab = []
         
         
     def indexation(self, corpus, parser, txtRepr):
@@ -43,31 +41,33 @@ class Index(object):
             method
         :param txtRepr: The TextRepresenter object, must implement
             getTextRepresentation(str) method.
+        :return: None
         """ 
         print("Performing the indexation...")
-        # The path to the files
-        self.corpus = corpus
         self.parser = parser
         self.textRepresenter = txtRepr
         
-        self.parser.initFile(self.corpus)
+        self.parser.initFile(corpus)
         
         # Build the index of documents and compute the length of each
         # stem representation
-        print("1st pass: build the index")
+        print("1st pass: build the index...")
         doc = self.parser.nextDocument()
         with open(self.indexPath, "w") as index:
             while doc is not None:
                 title = doc.getId()
+                self.docFrom[title] = doc.get("from")
                 #~ print("Parsing doc n°" + title)
                 stems = (self.textRepresenter
-                            .getTextRepresentation(doc.getText()))
-                for stem in stems.keys():
-                    self.addStem(stem, title)
-                stems = [w + ":" + str(n) for (w, n) in stems.items()]
+                             .getTextRepresentation(doc.getText()))
+                # Add all the stems in the vocabulary
+                for stem, freq in stems.items():
+                    self.addStem(stem, title, freq)
+                    
+                docRepr = [w + ":" + str(freq) for (w, freq) in stems.items()]
                 # the string that will be written:
                 toWrite = title + '{'
-                toWrite += ','.join(stems) + '}\n'
+                toWrite += ','.join(docRepr) + '}\n'
                 self.docs[title] = (index.tell(), len(toWrite))
                 
                 index.write(toWrite)
@@ -75,8 +75,8 @@ class Index(object):
         
         
         # Build the inverted index
-        print("2nd pass: build the inverted index")
-        self.parser.initFile(self.corpus) # Reset the parser 
+        print("2nd pass: build the inverted index...")
+        self.parser.initFile(corpus) # Reset the parser 
         doc = self.parser.nextDocument()
         with open(self.invertedPath, "w+") as invIndex:
             while doc is not None:
@@ -84,56 +84,72 @@ class Index(object):
                 #~ print("Parsing doc n°" + title)
                 stems = (self.textRepresenter
                             .getTextRepresentation(doc.getText()))
-                for stem in stems.keys():
-                    self.writeStem(stem, title, invIndex)
+                for stem, freq in stems.items():
+                    self.writeStem(stem, title, freq, invIndex)
                 doc = self.parser.nextDocument()
         
-        print("Finished")
+        print("Finished.")
         
         
-    def writeStem(self, stem, docId, indexFile):
-        """Write the stem in the inverted index (used in 2nd pass)"""
-        #~ print("Write stem '"+stem+"'")
+    def writeStem(self, stem, docId, freq, indexFile):
+        """Write the stem in the inverted index (used in 2nd pass)
+        
+        :param stem: The word to write
+        :param docId: The identifier for the document
+        :param freq: The frequency of the stem in the document
+        :param indexFile: The file handler. Should be an open file
+        
+        :return: None"""
         if self.stems[stem]["pos"] >= 0:  # We already encoutered this stem
-            cursor = self.stems[stem]["pos"] + len(stem) + 1
+            cursor = self.stems[stem]["pos"]
             indexFile.seek(cursor)
             repres = indexFile.read(self.stems[stem]["len"])
-            #~ print(("At position %d, repres = "+repres) % cursor)
              # Write the docId after the first ',,'
             idx_empty = repres.find(',,')
-            #~ print("idx_empty =", idx_empty)
             # Relative seek:
             indexFile.seek(cursor + idx_empty + 1)
-            indexFile.write(docId)
-            
+            indexFile.write(docId + ':' + str(freq))
+            indexFile.seek(cursor)
+            repres = indexFile.read(self.stems[stem]["len"])
+
         else: # New stem
             indexFile.seek(0, os.SEEK_END)
             self.stems[stem]["pos"] = indexFile.tell()
-            indexFile.write(stem+":{"+docId)
-            leftToWrite = self.stems[stem]["len"] - 2 - len(docId)
-            if leftToWrite > 0:
-                #~ print("Writing %d ','" % leftToWrite)
-                indexFile.write("," * leftToWrite)
-            indexFile.write("}\n")
+            startRepr = stem + '{' + docId + ":" + str(freq)
+            endRepr = '}\n'
+            midRepr = (self.stems[stem]["len"] - len(startRepr) - len(endRepr)) * ','
+            repres = startRepr + midRepr + endRepr
+            indexFile.write(repres)
         
-    def addStem(self, stem, docId):
+    def addStem(self, stem, docId, freq):
         """ Add the stem in self.stems (used in 1st pass)
-        :param docId: string
+        
+        :param stem: The word to add to the vocabulary
+        :param docId: string, the identifier for the document
+        :param freq: The frequency of stem in doc.
+        
+        :return: None
         """
         if stem in self.stems:        # Not a new stem
-            lenToAdd = len(docId) + 1 # for "docId,"
-            #~ print("'" + stem + "' is found in " + docId + " too, adding %d chars" % lenToAdd)
+            addRepr = docId + ':' + str(freq) + ','
+            lenToAdd = len(addRepr) 
             self.stems[stem]["len"] += lenToAdd
             
         else:  # Or add the new stem:
-            lenToAdd = len(docId) + 2 # 2 braces
-            #~ print("'" + stem + "' is found in " + docId + ", setting %d chars" % lenToAdd)
+            addRepr = stem + '{' + docId + ':' + str(freq) + '}\n'
+            lenToAdd = len(addRepr)
             self.stems[stem] = {"pos": -1,
                                 "len": lenToAdd}
         
     def getTfsForDoc(self, docId):
-        """ Return the representation of a given document"""
-        (pos, length) = self.docs[docId]
+        """ Return the stems found inside a document, with their
+        frequency.
+        
+        :param docId: The identifier for the wanted document
+        
+        :return: a dictionary of {string(stem): int(frequency)}"""
+        
+        (pos, length) = self.docs[str(docId)]
         tfs = None
         with open(self.indexPath, 'r') as index:
             index.seek(pos)
@@ -141,24 +157,40 @@ class Index(object):
             start = descr.find('{')
             stop = descr.find('}')
             descr = descr[start+1:stop]
-            # [descr] looks like "word:freq,word:freq"
             freqs = [stem.split(':') for stem in descr.split(',')]
             tfs = {word:int(freq) for (word, freq) in freqs}
         
         return tfs
         
     def getTfsForStem(self, stem):
-        """Return the doc frequencies of a given stem from 
-        the inverted index."""
+        """Return the doc frequencies of a given stem
+        :param stem: The wanted word
+        :return: A dictionary {int(docId}: int(frequency)}"""
         with open(self.invertedPath, "r") as invIndex:
-            invIndex.seek(self.stems[stem]["pos"] + len(stem) + 1)
-            repres = invIndex.read(self.stems[stem]["len"])
-            return repres[1:-1].split(',')
+            invIndex.seek(self.stems[stem]["pos"])
+            repres = invIndex.read(self.stems[stem]["len"])             
+            # 'repres' should look like: "[stem]{[doc]:[freq], ...}\n"
+            if not repres.startswith(stem):
+                print("Error with the representation. Exit")
+                exit()
+                
+        # Parsing the representation:
+        # List of strings of the format "[docId]:[freq]":
+        docFreq = repres.strip(stem)[1:-2].split(',')
+        # List of lists of the format ['[docId]', '[freq]']:
+        docFreq = [s.split(':') for s in docFreq]
+        # Constructing the final dictionary:
+        docFreq = {int(docId):int(freq) for (docId, freq) in docFreq}
+        return docFreq
         
     def getStrDoc(self, doc):
-        """ Return the string from where a document came from in the 
+        """ Return the string from where a document came in the 
         source file""" 
-        return None
+        srcPath, pos, length = self.docFrom[int(doc)]
+        with open(srcPath, 'r') as f:
+            f.seek(pos)
+            txt = f.read(length)
+        return txt
 
 
 
