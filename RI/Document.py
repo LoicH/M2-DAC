@@ -13,7 +13,8 @@ class Document(object):
         """ Constructor 
         :param identifier: unique identifier
         :param text: Usually 'title+author+kw+texte'
-        :param other: Other informations, such as where to find this doc"""
+        :param other: Other informations, such as where to find this doc.
+            In other["from"] you can find the source doc."""
         
         self.identifier=identifier
         self.text=text
@@ -27,6 +28,7 @@ class Document(object):
         return self.text
        
     def get(self,key):
+        """get("from") gives the original source file"""
         return self.others[key]  
     
     def set(self,key,value):
