@@ -4,6 +4,7 @@
 import ParserCACM
 import TextRepresenter
 import Index
+import BinaryWeighter
 
 # TODO:
 # - change Index.docs to add 'pos' and 'len' support
@@ -14,18 +15,32 @@ if __name__ == "__main__":
 
 	# Construct the index:
     idx = Index.Index("cacm", "gendata/")
+    stemmer = TextRepresenter.PorterStemmer()
     idx.indexation("cacm/cacm.txt", ParserCACM.ParserCACM(),
-                   TextRepresenter.PorterStemmer())
+                   stemmer)
                    
     print("###### A bit of testing: ###### ")
-    print("Retrieve stems in doc 19:")
-    print(idx.getTfsForDoc(19))
-    print("Should look like “Glossary of Computer Engineering and \
-Programming Terminology”")
+    print("Retrieve stems in doc 20:")
+    print(idx.getTfsForDoc(20))
+    print("""Should look like 
+    “Accelerating Convergence of Iterative Processes
+A technique is discussed which, when applied
+to an iterative procedure for the solution of
+an equation, accelerates the rate of convergence if
+the iteration converges and induces convergence if
+the iteration diverges.  An illustrative example is given.”""")
 
-    print("Retrieve docs that contains “propos”:")
-    print(idx.getTfsForStem("propos"))
-    print("Should include docs 9, 11 and 14")
+    print("Retrieve docs that contains 'iter':")
+    print(idx.getTfsForStem("iter"))
+    print("Should include doc 20")
+    
+    print("###### Testing BinaryWeighter: ###### ")
+    bw = BinaryWeighter.BinaryWeighter(idx)
+    print("bw.getDocWeightsForDoc(20):", bw.getDocWeightsForDoc(20))
+    print("bw.getDocWeightsForStem(\"iter\"):", bw.getDocWeightsForStem("iter"))
+    query = stemmer.getTextRepresentation("book about glossary and book terminology")
+    print("bw.getWeightsForQuery(query):", bw.getWeightsForQuery(query))
+    
 
 	
 
