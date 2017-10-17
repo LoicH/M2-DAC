@@ -5,6 +5,7 @@ import ParserCACM
 import TextRepresenter
 import Index
 import BinaryWeighter
+import similarity
 
 # TODO:
 # - change Index.docs to add 'pos' and 'len' support
@@ -13,10 +14,10 @@ import BinaryWeighter
 if __name__ == "__main__":
     cacm_txt = "cacm/cacm.txt"
 
-	# Construct the index:
+    # Construct the index:
     idx = Index.Index("cacm", "gendata/")
     stemmer = TextRepresenter.PorterStemmer()
-    idx.indexation("cacm/cacm.txt", ParserCACM.ParserCACM(),
+    idx.indexation(cacm_txt, ParserCACM.ParserCACM(),
                    stemmer)
                    
     print("###### A bit of testing: ###### ")
@@ -38,12 +39,13 @@ the iteration diverges.  An illustrative example is given.”""")
     bw = BinaryWeighter.BinaryWeighter(idx)
     print("bw.getDocWeightsForDoc(20):", bw.getDocWeightsForDoc(20))
     print("bw.getDocWeightsForStem(\"iter\"):", bw.getDocWeightsForStem("iter"))
-    query = stemmer.getTextRepresentation("book about glossary and book terminology")
+    query = stemmer.getTextRepresentation("Convergence of Iterative Processes")
     print("bw.getWeightsForQuery(query):", bw.getWeightsForQuery(query))
     
 
-	
-
-	
+    print("###### Testing Vectoriel: ###### ")
+    vect = similarity.Vectoriel(idx, bw)
+    print(vect.getRanking(query))
+    
                    
     

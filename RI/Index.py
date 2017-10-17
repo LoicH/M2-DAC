@@ -60,7 +60,7 @@ class Index(object):
                 #~ print("Parsing doc n°" + title)
                 stems = (self.textRepresenter
                              .getTextRepresentation(doc.getText()))
-                print("Doc",title,"stems:",stems)
+                #~ print("Doc",title,"stems:",stems)
                 # Add all the stems in the vocabulary
                 for stem, freq in stems.items():
                     self.addStem(stem, title, freq)
@@ -193,6 +193,7 @@ class Index(object):
             txt = f.read(length)
         return txt
 
-
+    def getDocsID(self):
+        return list(self.docs.keys())
 
 
