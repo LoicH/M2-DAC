@@ -5,7 +5,59 @@
 """
 
 import numpy as np
-import operator
+import operator 
+
+class Weighter():
+    def __init__(self, index):
+        """param index: Index object"""
+        self.index = index 
+        
+    def getDocWeightsForDoc(self, docId):
+        raise NotImplementedError("Abstract method.")
+        
+    def getDocWeightsForStem(self, stem):
+        raise NotImplementedError("Abstract method.")
+        
+    def getWeightsForQuery(self, query):
+        raise NotImplementedError("Abstract method.")
+        
+class BinaryWeighter(Weighter):
+    def __init__(self, index):
+        """param index: Index object"""
+        super().__init__(index)
+        
+    def getDocWeightsForDoc(self, docId):
+        stems = self.index.getTfsForDoc(docId)
+        return stems 
+        
+    def getDocWeightsForStem(self, stem):
+        docFreq = self.index.getTfsForStem(stem)
+        return docFreq
+        
+    def getWeightsForQuery(self, query):
+        return {stem:1 for stem in query.keys() }
+        
+
+class TfidfWeighter(Weighter):
+    def __init__(self, index):
+        """param index: Index object"""
+        super().__init__(index)
+        
+    def getDocWeightsForDoc(self, docId):
+        stems = self.index.getTfsForDoc(docId)
+        return stems 
+        
+    def getDocWeightsForStem(self, stem):
+        docFreq = self.index.getTfsForStem(stem)
+        return docFreq
+        
+    def getWeightsForQuery(self, query):
+        docsID = self.index.getDocsID()
+        N = len(docsID)
+        n = lambda t:len(self.index.getTfsForStem(t))
+        return {stem:np.log(N/n(stem)) for stem in query.keys() }
+        
+
 
 class IRmodel():
     def __init__(self, index):
