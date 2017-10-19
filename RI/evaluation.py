@@ -56,6 +56,11 @@ class QueryParser:
             self.relFile.close()
     
     def nextQuery(self):
+        # Extract data between start and end tags
+        # Call the abstract method "parseData" to construct a Query object
+        # Call the abstract method "extractRelevance(queryId)" 
+        # to extract the relevant docs and get a dictionary
+        # Add this dictionary to the Query object
         raise NotImplementedError
 
     def getQuery(self, queryText, queryRel):
