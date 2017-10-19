@@ -27,33 +27,39 @@ class EvalMeasure:
 
 
 class PrecisionRecallMeasure(EvalMeasure):
+    def __init__(self, irlist):
+        self.irlist = irlist
 
-    def getRelevantResults(irlist):
+    def getRelevantResults(self):
         # The relevant results of the query are the ones that have
         # a score higher than minimum:
-        minScore = min([score for (docId, score) in irlist.getScores()])
-        relevantResults = [docId for (docId, score) in irlist.getScores()
+        minScore = min([score for (docId, score) in self.irlist.getScores()])
+        relevantResults = [docId for (docId, score) in self.irlist.getScores()
                           if score > minScore]
+        return relevantResults
 
-    def precisionAt(i, irlist):
+    def precisionAt(self, i):
         """ Return the number of real relevant results found, divided by i
         """
         # The true relevants results are the one in Query.relevants
-        trueRels = list(irlist.getQuery().getRelevants().keys())
+        trueRels = list(self.irlist.getQuery().getRelevants().keys())
         # Relevant results we found in the query:
-        relevantFound = np.intersect1d(getRelevantResults(irlist),
+        relevantFound = np.intersect1d(self.getRelevantResults(),
                                     trueRels)
         return len(relevantFound)/i
 
-    def recallAt(i, irlist):
-        firstRelevantResults = getRelevantResults(irlist)[:i]
+    def recallAt(self, i):
+        firstRelevantResults = self.getRelevantResults()[:i]
         # The true relevants results are the one in Query.relevants
-        trueRels = list(irlist.getQuery().getRelevants().keys())
+        # but don't take more than i results
+        trueRels = list(self.irlist.getQuery().getRelevants().keys())[:i]
         relevantFound = np.intersect1d(firstRelevantResults, trueRels)
+        print("True relevant found among the first %d results: %d, should be %d"
+                % (i, len(relevantFound), len(trueRels)))
         return len(relevantFound) / len(trueRels)
 
 
 
-    def eval(irlist):
-        return [(precisionAt(i, irlist), recallAt(i, irlist))
-                for i in range(1, len(irlist.getScores()))]
+    def eval(self):
+        return [(self.precisionAt(i), self.recallAt(i))
+                for i in range(1, len(self.irlist.getScores()), 10)]
