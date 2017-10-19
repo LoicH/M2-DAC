@@ -26,7 +26,7 @@ if __name__ == "__main__":
     gendata = "gendata"
     indexName = "cacm"
     docId = 46
-    queryId = np.random.randint(1,1000)
+    queryId = np.random.randint(1,60)
     wordTest = "logic"
 
     cacm_txt = os.path.join(srcFolder, srcFile)
@@ -98,6 +98,7 @@ if __name__ == "__main__":
     queryTxt = stemmer.getTextRepresentation(query.getText())
     scores = vect.getRanking(queryTxt)
     print("Scores:", scores)
+    
     print("\n###### Testing evaluation.PrecisionRecallMeasure: ###### ")
     irlist = evaluation.IRList(query, scores)
     precisRecall = evaluation.PrecisionRecallMeasure(irlist)

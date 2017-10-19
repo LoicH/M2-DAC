@@ -167,6 +167,8 @@ class Index(object):
         """Return the doc frequencies of a given stem
         :param stem: The wanted word
         :return: A dictionary {int(docId}: int(frequency)}"""
+        if stem not in self.stems:
+            return {}
         with open(self.invertedPath, "r") as invIndex:
             invIndex.seek(self.stems[stem]["pos"])
             repres = invIndex.read(self.stems[stem]["len"])             

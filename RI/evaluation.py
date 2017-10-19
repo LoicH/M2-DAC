@@ -54,8 +54,8 @@ class PrecisionRecallMeasure(EvalMeasure):
         # but don't take more than i results
         trueRels = list(self.irlist.getQuery().getRelevants().keys())[:i]
         relevantFound = np.intersect1d(firstRelevantResults, trueRels)
-        print("True relevant found among the first %d results: %d, should be %d"
-                % (i, len(relevantFound), len(trueRels)))
+        # print("True relevant found among the first %d results: %d, should be %d"
+        #         % (i, len(relevantFound), len(trueRels)))
         return len(relevantFound) / len(trueRels)
 
 

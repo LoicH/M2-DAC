@@ -54,8 +54,14 @@ class TfidfWeighter(Weighter):
     def getWeightsForQuery(self, query):
         docsID = self.index.getDocsID()
         N = len(docsID)
-        n = lambda t:len(self.index.getTfsForStem(t))
-        return {stem:np.log(N/n(stem)) for stem in query.keys() }
+        
+        def idf(stem):
+            n = len(self.index.getTfsForStem(stem))
+            if n == 0:
+                return 0
+            else :
+                return np.log(N/n)
+        return {stem:idf(stem) for stem in query.keys() }
 
 
 

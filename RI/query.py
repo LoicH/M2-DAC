@@ -33,7 +33,7 @@ class Query():
 
     def __str__(self):
         return ("Query {id="+self.id+", txt='"+self.text+
-                "', relevances="+str(self.relevants)+"}")
+                "', relevances="+str(list(self.relevants.keys()))+"}")
 
 
 class QueryParser:
