@@ -45,8 +45,8 @@ class PorterStemmer(TextRepresenter):
         """
         
         tab=re.findall(r"\w+",text,re.UNICODE)
-        tab=[porter.stem(word.lower()) for word in tab]
-        tab = [word for word in tab if word not in self.stopWords]
+        tab=[word.lower() for word in tab]
+        tab = [porter.stem(word) for word in tab if word not in self.stopWords]
         ret=Counter(tab)
         ret={a:b for (a,b) in ret.items()}
         return ret
