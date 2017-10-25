@@ -1,0 +1,56 @@
+// 6.2.1 :
+
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpedia-ont: <http://dbpedia.org/ontology/>
+prefix dbpprop: <http://dbpedia.org/property/>
+prefix yago: <http://dbpedia.org/class/yago/>
+select ?a
+where { ?a a dbpedia-ont:PopulatedPlace ; dbpedia-ont:country dbpedia:France . } 
+
+
+
+// 6.2.2 :
+
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpedia-ont: <http://dbpedia.org/ontology/>
+prefix dbpprop: <http://dbpedia.org/property/>
+prefix yago: <http://dbpedia.org/class/yago/>
+select count(?a)
+where { ?a a dbpedia-ont:PopulatedPlace ; dbpedia-ont:country dbpedia:France . } 
+
+
+// 6.2.3 :
+
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpedia-ont: <http://dbpedia.org/ontology/>
+prefix dbpprop: <http://dbpedia.org/property/>
+prefix yago: <http://dbpedia.org/class/yago/>
+select ?b ?c
+where { dbpedia:La_Rochelle ?b ?c . }
+
+
+
+// 6.2.4 :
+
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpedia-ont: <http://dbpedia.org/ontology/>
+prefix dbpprop: <http://dbpedia.org/property/>
+prefix yago: <http://dbpedia.org/class/yago/>
+select ?s
+where { ?s a yago:CapitalsInEurope .}
+
+
+
+// 6.2.5 :
+
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpedia-ont: <http://dbpedia.org/ontology/>
+prefix dbpprop: <http://dbpedia.org/property/>
+prefix yago: <http://dbpedia.org/class/yago/>
+select ?s ?c ?m ?p
+where { ?s a yago:CapitalsInEurope .
+	optional {?s dbpedia-ont:country ?c .}
+	optional {?s dbpprop:mayor ?m .}
+	optional {?s dbpprop:population ?p .}
+	}
+
