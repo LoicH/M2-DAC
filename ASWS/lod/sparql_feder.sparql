@@ -1,0 +1,15 @@
+prefix dbpedia: <http://dbpedia.org/resource/> 
+prefix dbpedia-ont: <http://dbpedia.org/ontology/> 
+prefix dbpprop: <http://dbpedia.org/property/>
+
+SELECT DISTINCT ?n ?s ?b ?d
+FROM  <directors.ttl>
+WHERE { [] dbpprop:name ?n
+        SERVICE SILENT <http://dbpedia.org/sparql> {	
+	              ?a dbpprop:name ?n .	
+ 		      OPTIONAL { ?a dbpprop:birthDate ?b }
+ 		      OPTIONAL { ?a dbpprop:deathDate ?d }
+ 		      OPTIONAL { ?a dbpprop:spouse ?s }
+	}
+}
+										   

@@ -1,0 +1,6 @@
+@prefix dbpprop: <http://dbpedia.org/property/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+
+dbpedia:Alfred_Hitchcock dbpprop:name "Sir Alfred Hitchcock"@en  .
+dbpedia:Lars_von_Trier dbpprop:name "Lars von Trier"@en .
+dbpedia:François_Truffaut dbpprop:name "François Truffaut"@en  .
