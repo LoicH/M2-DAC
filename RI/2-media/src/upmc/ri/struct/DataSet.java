@@ -27,4 +27,12 @@ public class DataSet<X,Y>  implements Serializable{
 		}
 		return out;
 	}
+
+	public List<STrainingSample<X, Y>> getTrain() {
+		return this.listtrain;
+	}
+	
+	public List<STrainingSample<X, Y>> getTest() {
+		return this.listtest;
+	}
 }

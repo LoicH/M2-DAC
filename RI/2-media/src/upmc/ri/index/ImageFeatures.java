@@ -10,6 +10,12 @@ public class ImageFeatures {
 	public static final int tdico=1000;
 	//private Rectangle2D.Double r;
 	
+	/** Visual representation of an image
+	 * @param x 1st coordinate of each word
+	 * @param y 2nd coordinate of each word
+	 * @param words Words associated to dots
+	 * @param iD Image identifier
+	 */
 	public ImageFeatures(List<Double> x, List<Double> y, List<Integer> words,String iD) {
 		super();
 		this.x = x;

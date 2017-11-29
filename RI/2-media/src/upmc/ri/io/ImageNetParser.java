@@ -11,6 +11,11 @@ import upmc.ri.index.ImageFeatures;
 
 public class ImageNetParser {
 
+	/** Parse files and return descriptions of all images from a category
+	 * @param filename The path to the file
+	 * @return The list of all descriptions (Bag of features) of images
+	 * @throws Exception When I/O errors occur while reading the file.
+	 */
 	public static List<List<Integer>> getWords(String filename) throws Exception{
 		List<List<Integer>> res = new ArrayList<List<Integer>>();
 		BufferedReader buff = new BufferedReader(new FileReader(filename));
@@ -34,7 +39,7 @@ public class ImageNetParser {
 					word = Integer.parseInt(linesplit[k]);
 				wordsim.add(word);
 			}
-			// 3 lines for sikipping x-y-BB
+			// 3 lines for skipping x-y-BB
 			line = buff.readLine();
 			line = buff.readLine();
 			line = buff.readLine();
