@@ -16,12 +16,19 @@ public class Evaluator<X,Y> {
 	private double err_train;
 	private double err_test;
 	
+//	public Evaluator(List<STrainingSample<X,Y>> lts, List<STrainingSample<X,Y>>  ltt, IStructModel<X,Y> m){
+//		this.listtrain = lts;
+//		this.listtest  = ltt;
+//		this.model = m;
+//		this.pred_test = new ArrayList<Y>();
+//		this.pred_train = new ArrayList<Y>();
+//	}
 	public void evaluate(){
 		err_train=0.0;
 		pred_train = new ArrayList<Y>();
 		// Evaluate training set
 		for(STrainingSample<X,Y> ts : listtrain){
-			Y pred = model.predict(ts);
+			Y pred = model.predict(ts.input);
 			pred_train.add(pred);
 			err_train += model.instantiation().delta(ts.output,pred);
 		}
@@ -32,13 +39,26 @@ public class Evaluator<X,Y> {
 		pred_test = new ArrayList<Y>();
 		// Evaluate testing set
 		for(STrainingSample<X,Y> ts : listtest){
-			Y pred = model.predict(ts);
+			Y pred = model.predict(ts.input);
 			pred_test.add(pred);
 			err_test += model.instantiation().delta(ts.output,pred);
 		}
 		err_test /=listtest.size();
 	}
-
+	
+	public void evaluateTrain(){
+		err_train=0.0;
+		pred_train = new ArrayList<Y>();
+		// Evaluate training set
+		for(STrainingSample<X,Y> ts : listtrain){
+			Y pred = model.predict(ts.input);
+			pred_train.add(pred);
+			err_train += model.instantiation().delta(ts.output,pred);
+		}
+		
+		err_train /=listtrain.size();
+	}
+		
 	public double getErr_train() {
 		return err_train;
 	}
